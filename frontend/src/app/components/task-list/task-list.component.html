@@ -1,0 +1,51 @@
+<div [ngBusy]="loading" class="container" style="padding: 70px 0;">
+    <mat-card>
+        <mat-card-header>
+            <mat-card-title class="text-center">
+                <button mat-raised-button color="primary" [disabled]="editMode" (click)="addTask()" class="pull-left">
+                    <i class="fa fa-plus fa-lg pr-2"></i> Add new
+                </button>
+                <button mat-raised-button color="warn">
+                    <mat-icon>timer</mat-icon>
+                    <span class="m-2 text-uppercase" style="font-size: 30px;">Git Bits Dun</span>
+                </button>
+                <button mat-button class="pull-right" (click)="toggleEditMode()">
+                    {{editMode ? 'Done' : 'Edit'}}
+                </button>
+            </mat-card-title>
+        </mat-card-header>
+        <mat-divider></mat-divider>
+        <mat-card-content class="task-list-scroll">
+            <mat-list>
+                <mat-list-item class="mt-5 mb-5" *ngFor="let task of todoList">
+                    <app-task-item 
+                        class="task-item"
+                        [task]="task" 
+                        [editMode]="editMode" 
+                        (taskDeleted)="onTaskDeleted($event)"
+                        (taskChecked)="onTaskChecked($event)"
+                        (taskEdited)="onTaskEdited($event)">
+                    </app-task-item>
+                    <mat-divider [inset]="true"></mat-divider>
+                </mat-list-item>
+            </mat-list>
+
+            <button mat-raised-button color="accent" class="mt-5 mb-5" (click)="toggleShowCompleted()">
+                {{showCompleted ? 'HIDE COMPLETED TASKS' : 'SHOW COMPLETED TASKS'}}
+            </button>
+
+            <mat-list *ngIf="showCompleted">
+                <mat-list-item class="mt-5 mb-5" *ngFor="let task of completedList">
+                    <app-task-item 
+                        class="task-item"
+                        [task]="task" 
+                        [editMode]="editMode" 
+                        (taskDeleted)="onTaskDeleted($event)"
+                        (taskChecked)="onTaskChecked($event)">
+                    </app-task-item>
+                    <mat-divider [inset]="true"></mat-divider>
+                </mat-list-item>
+            </mat-list>
+        </mat-card-content>
+    </mat-card>
+</div>

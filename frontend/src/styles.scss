@@ -1,0 +1,36 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import '~ng-busy/src/style/busy.css';
+
+.clickable {
+    cursor: pointer !important;
+}
+
+.task-modal-content {
+    label {
+        font-weight: bold;
+    }
+}
+
+button:focus {
+    outline: 0 !important;
+}
+
+.mat-card-header-text{
+    width: 100% !important;
+}
+
+.task-item {
+    width: 100% !important;
+}
+
+.task-action {
+    min-height: 40px;
+    min-width: 40px;
+}
+
+html, body { height: 100%; }
+body { 
+    margin: 0; 
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
