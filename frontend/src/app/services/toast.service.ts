@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
+const TIME_OUT = 3000;
+
 @Injectable({
   providedIn: 'root'
 })
@@ -10,7 +12,7 @@ export class ToastService {
 
   public show(text: string, options: any = {}): void {
     this.snackBar.open(text, '', {
-      duration: 3000,
+      duration: TIME_OUT,
       panelClass: ['text-white'],
       ... options
     });

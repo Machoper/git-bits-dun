@@ -50,7 +50,7 @@ export class TaskListComponent implements OnInit {
         this.taskApiService.addTask(result).subscribe(response => {
           const task = response.data;
           this.taskServcie.addTaskToList(this.todoList, task);
-          this.toastService.show(response.message);
+          this.toastService.show(`Successfully added '${task.title}'!`);
         }, this.toastService.showError);
       }
     });
@@ -94,6 +94,22 @@ export class TaskListComponent implements OnInit {
 
   public toggleShowCompleted(): void {
     this.showCompleted = !this.showCompleted;
+  }
+
+  public gitBitsDun(): void {
+    const randomIdx = Math.floor(Math.random() * this.todoList.length);
+    const selectedTask = this.todoList[randomIdx];
+    selectedTask.hasTimer = true;
+
+    const elementId = `task_${selectedTask._id}`;
+    const el = document.getElementById(elementId);
+    if (el) {
+      el.scrollIntoView({behavior: 'smooth', block: 'center'});
+    }
+  }
+
+  public isGitBitsDunDisabled(): boolean {
+    return _.some(this.todoList, task => task.hasTimer) || this.todoList.length < 5;
   }
 
 }

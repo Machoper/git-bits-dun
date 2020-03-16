@@ -31,14 +31,14 @@ export class TaskItemComponent implements OnInit {
     this.priorityOption = PriorityOptions.getOptionByValue(this.task.priority);
   }
 
-  public onDelete(task: Task): void {
+  public delete(task: Task): void {
     this.taskApiService.deleteTask(task._id).subscribe((response) => {
-      this.toastService.show(response.message);
+      this.toastService.show(`Successfully deleted '${task.title}'!`);
       this.taskDeleted.emit({task});
     });
   }
 
-  public onEdit(task: Task): void {
+  public edit(task: Task): void {
     const data = {
       _id: task._id,
       title: task.title,
@@ -51,20 +51,23 @@ export class TaskItemComponent implements OnInit {
         this.taskApiService.updateTask(result).subscribe(response => {
           const updatedTask = response.data;
           this.taskEdited.emit({ task: updatedTask });
-          // this.priorityOption = PriorityOptions.getOptionByValue(updatedTask.priority);
-          this.toastService.show(response.message);
+          this.toastService.show(`Successfully updated '${updatedTask.title}'!`);
         }, this.toastService.showError);
       }
     });
   }
 
-  public onCheck(task: Task): void {
+  public check(task: Task): void {
     this.taskApiService.updateTask(task).subscribe(response => {
       const updatedTask = response.data;
       this.taskChecked.emit({ task: updatedTask });
       const toast = updatedTask.completed ? `Completed '${updatedTask.title}'!` : `'${updatedTask.title}' has been added back to the list!`;
       this.toastService.show(toast);
     }, this.toastService.showError);
+  }
+
+  public onTimeUp($event): void {
+    this.task.hasTimer = false;
   }
 
 }

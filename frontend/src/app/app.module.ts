@@ -13,6 +13,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatListModule } from '@angular/material/list';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatInputModule } from '@angular/material/input';
+import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatSelectModule } from '@angular/material/select';
 import { NgBusyModule } from 'ng-busy';
 
@@ -21,13 +22,15 @@ import { AppComponent } from './app.component';
 import { TaskListComponent } from './components/task-list/task-list.component';
 import { TaskItemComponent } from './components/task-item/task-item.component';
 import { TaskModalComponent } from './components/task-modal/task-modal.component';
+import { TaskTimerComponent } from './components/task-timer/task-timer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TaskListComponent,
     TaskItemComponent,
-    TaskModalComponent
+    TaskModalComponent,
+    TaskTimerComponent
   ],
   imports: [
     BrowserModule,
@@ -45,6 +48,7 @@ import { TaskModalComponent } from './components/task-modal/task-modal.component
     MatListModule,
     MatDialogModule,
     MatInputModule,
+    MatTooltipModule,
     MatSelectModule,
     HttpClientModule,
     NgBusyModule

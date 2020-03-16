@@ -1,15 +1,22 @@
-<div [ngBusy]="loading" class="container" style="padding: 70px 0;">
+<div class="jumbotron jumbotron-fluid">
+<div [ngBusy]="loading" class="container">
     <mat-card>
         <mat-card-header>
-            <mat-card-title class="text-center">
-                <button mat-raised-button color="primary" [disabled]="editMode" (click)="addTask()" class="pull-left">
+            <mat-card-title class="pb-2">
+                <button mat-raised-button color="primary" matTooltip="Add a new task" 
+                    class="pull-left mt-3"
+                    [disabled]="editMode" 
+                    (click)="addTask()">
                     <i class="fa fa-plus fa-lg pr-2"></i> Add new
                 </button>
-                <button mat-raised-button color="warn">
-                    <mat-icon>timer</mat-icon>
+                <button mat-raised-button color="accent" matTooltip="Randomly select a task from the list and start a 30-minute countdown" 
+                    class="git-bits-dun mt-2"
+                    [disabled]="isGitBitsDunDisabled()" 
+                    (click)="gitBitsDun()">
+                    <mat-icon>add_alarm</mat-icon>
                     <span class="m-2 text-uppercase" style="font-size: 30px;">Git Bits Dun</span>
                 </button>
-                <button mat-button class="pull-right" (click)="toggleEditMode()">
+                <button mat-button class="pull-right mt-3" (click)="toggleEditMode()">
                     {{editMode ? 'Done' : 'Edit'}}
                 </button>
             </mat-card-title>
@@ -17,7 +24,7 @@
         <mat-divider></mat-divider>
         <mat-card-content class="task-list-scroll">
             <mat-list>
-                <mat-list-item class="mt-5 mb-5" *ngFor="let task of todoList">
+                <mat-list-item id="task_{{task._id}}" class="mt-5 mb-5" *ngFor="let task of todoList">
                     <app-task-item 
                         class="task-item"
                         [task]="task" 
@@ -30,7 +37,9 @@
                 </mat-list-item>
             </mat-list>
 
-            <button mat-raised-button color="accent" class="mt-5 mb-5" (click)="toggleShowCompleted()">
+            <button mat-raised-button color="accent" matTooltip="Hide/Show completed tasks" 
+                class="show-hide-button mt-5 mb-5" 
+                (click)="toggleShowCompleted()">
                 {{showCompleted ? 'HIDE COMPLETED TASKS' : 'SHOW COMPLETED TASKS'}}
             </button>
 
@@ -48,4 +57,5 @@
             </mat-list>
         </mat-card-content>
     </mat-card>
+</div>
 </div>

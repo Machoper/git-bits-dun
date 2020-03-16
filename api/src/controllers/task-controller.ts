@@ -1,8 +1,8 @@
 import { Task } from '../models/task-model';
 import { Request, Response } from 'express';
 
-const success = (data: any, message: string): any => { 
-    return { data, message }
+const success = (data?: any): any => { 
+    return { data };
 };
 
 export class TaskController{
@@ -14,7 +14,7 @@ export class TaskController{
             if(err){
                 res.send(err);
             }
-            res.json(success(tasks, ''));
+            res.json(success(tasks));
         });
     }
 
@@ -26,7 +26,7 @@ export class TaskController{
             if(err){
                 res.send(err);
             }    
-            res.json(success(task, 'Successfully added 1 To-Do task!'));
+            res.json(success(task));
         });
     }
 
@@ -35,7 +35,7 @@ export class TaskController{
             if(err){
                 res.send(err);
             }
-            res.json(success(task, ''));
+            res.json(success(task));
         });
     }
 
@@ -44,7 +44,7 @@ export class TaskController{
             if(err){
                 res.send(err);
             }
-            res.json(success(task, 'Successfully updated 1 To-Do task!'));
+            res.json(success(task));
         });
     }
 
@@ -53,7 +53,7 @@ export class TaskController{
             if(err){
                 res.send(err);
             }
-            res.json(success({}, 'Successfully deleted 1 To-Do task!'));
+            res.json(success());
         });
     }
 }

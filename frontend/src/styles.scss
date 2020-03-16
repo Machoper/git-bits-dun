@@ -2,6 +2,10 @@
 
 @import '~ng-busy/src/style/busy.css';
 
+.jumbotron {
+    height: 100%;
+}
+
 .clickable {
     cursor: pointer !important;
 }
@@ -27,6 +31,21 @@ button:focus {
 .task-action {
     min-height: 40px;
     min-width: 40px;
+}
+
+.mat-checkbox-inner-container {
+    width: 25px !important;
+    height: 25px !important;
+}
+
+.mat-icon-button .mat-icon, .mat-icon-button i {
+    margin-bottom: 16px;
+}
+
+.mat-snack-bar-container {
+    max-width: 66vw !important;
+    overflow: hidden;
+    white-space: nowrap;
 }
 
 html, body { height: 100%; }

@@ -5,5 +5,5 @@ export interface Task {
     creationDate: Date;
     priority: number;
     completed: boolean;
-    timer: number;
+    hasTimer?: boolean;
 }

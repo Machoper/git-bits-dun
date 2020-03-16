@@ -1,18 +1,36 @@
-<div>
+<div class="row">
     <span class="col-sm-1 task-action">
-        <button mat-icon-button class="animated fadeIn" *ngIf="editMode && !task.completed" (click)="onEdit(task)">
+        <button mat-icon-button matTooltip="Edit task"
+            class="animated fadeIn"
+            [disabled]="task.hasTimer" 
+            *ngIf="editMode && !task.completed" 
+            (click)="edit(task)">
             <mat-icon>edit</mat-icon>
         </button>
-        <mat-checkbox class="animated fadeIn" *ngIf="!editMode" [(ngModel)]="task.completed" (change)="onCheck(task)"></mat-checkbox>
+        <mat-checkbox 
+            class="animated fadeIn" 
+            *ngIf="!editMode" 
+            [(ngModel)]="task.completed" 
+            (change)="check(task)">
+        </mat-checkbox>
     </span>
     
-    <span [ngClass]="{'completed': task.completed}" class="col-sm-10">
+    <span [ngClass]="{'completed': task.completed}" class="col-sm-8 text-truncate d-flex-inline">
         <span class="col-sm-1 badge badge-pill {{priorityOption.className}}">{{priorityOption.name}}</span>
-        <span class="col-sm-10 ml-5">{{task.title}}</span>
+        <span class="col-sm-9 ml-3 mr-3">{{task.title}}</span>
     </span>
 
-    <span>
-        <button mat-icon-button color="warn" class="col-sm-1 pull-right animated fadeIn" *ngIf="editMode" (click)="onDelete(task)">
+    <span class="col-sm-2">
+        <app-task-timer *ngIf="task.hasTimer" (timeUp)="onTimeUp($event)"></app-task-timer>
+    </span>
+
+    <span class="col-sm-1">
+        <button mat-icon-button matTooltip="Delete task"
+            color="warn" 
+            class="pull-right animated fadeIn" 
+            [disabled]="task.hasTimer"
+            *ngIf="editMode" 
+            (click)="delete(task)">
             <mat-icon>delete</mat-icon>
         </button>
     </span>
