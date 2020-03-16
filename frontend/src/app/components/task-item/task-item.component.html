@@ -17,7 +17,7 @@
     
     <span [ngClass]="{'completed': task.completed}" class="col-sm-8 text-truncate d-flex-inline">
         <span class="col-sm-1 badge badge-pill {{priorityOption.className}}">{{priorityOption.name}}</span>
-        <span class="col-sm-9 ml-3 mr-3">{{task.title}}</span>
+        <span matTooltip="{{task.description}}" class="col-sm-9 ml-3 mr-3">{{task.title}}</span>
     </span>
 
     <span class="col-sm-2">

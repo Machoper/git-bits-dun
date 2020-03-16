@@ -30,7 +30,8 @@ class App {
         mongoose.connect(process.env.DB_CONNECTION || 'mongodb://localhost:27017/GitBitsDun', 
             { 
                 useNewUrlParser: true,
-                useUnifiedTopology: true
+                useUnifiedTopology: true,
+                useFindAndModify: false
                 // ssl: false,
                 // sslValidate: false
                 // checkServerIdentity: false
