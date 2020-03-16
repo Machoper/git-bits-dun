@@ -32,15 +32,7 @@ class App {
                 useNewUrlParser: true,
                 useUnifiedTopology: true,
                 useFindAndModify: false
-                // ssl: false,
-                // sslValidate: false
-                // checkServerIdentity: false
-                // replicaSet: 'replset'
             }
-            // (err) => { 
-            //     console.log('connected to MongoDB!');
-            //     console.log(err);
-            // }
         )
         .then(() => console.log('DB Connected!'))
         .catch(err => console.log(err.reason));
