@@ -3,7 +3,7 @@ import { TaskController } from "../controllers/task-controller";
 import dotenv from 'dotenv';
 
 dotenv.config();
-const prefix = process.env.API_PREFIX || '';
+const prefix = process.env.API_PREFIX || '/api/v1';
 
 export class TaskRoutes {
 
