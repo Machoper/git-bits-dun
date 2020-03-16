@@ -29,7 +29,7 @@ export class TaskListComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.loading = this.taskApiService.getTasks().subscribe((response) => {
+    this.loading = this.taskApiService.getTasks().subscribe(response => {
       const taskList = response.data;
       _.each(taskList, (task: Task) => {
         if (task.completed) {
@@ -40,7 +40,7 @@ export class TaskListComponent implements OnInit {
       });
       this.todoList = _.sortBy(this.todoList, 'priority');
       this.completedList = _.sortBy(this.completedList, 'priority');
-    });
+    }, this.toastService.show);
   }
 
   public addTask() {
@@ -51,7 +51,7 @@ export class TaskListComponent implements OnInit {
           const task = response.data;
           this.taskServcie.addTaskToList(this.todoList, task);
           this.toastService.show(`Successfully added '${task.title}'!`);
-        }, this.toastService.showError);
+        }, this.toastService.show);
       }
     });
   }

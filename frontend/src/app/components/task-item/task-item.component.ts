@@ -52,7 +52,7 @@ export class TaskItemComponent implements OnInit {
           const updatedTask = response.data;
           this.taskEdited.emit({ task: updatedTask });
           this.toastService.show(`Successfully updated '${updatedTask.title}'!`);
-        }, this.toastService.showError);
+        }, this.toastService.show);
       }
     });
   }
@@ -63,7 +63,7 @@ export class TaskItemComponent implements OnInit {
       this.taskChecked.emit({ task: updatedTask });
       const toast = updatedTask.completed ? `Completed '${updatedTask.title}'!` : `'${updatedTask.title}' has been added back to the list!`;
       this.toastService.show(toast);
-    }, this.toastService.showError);
+    }, this.toastService.show);
   }
 
   public onTimeUp($event): void {

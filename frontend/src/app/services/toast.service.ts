@@ -18,10 +18,4 @@ export class ToastService {
     });
   }
 
-  public showError(err: any) {
-    if (err && err.message) {
-      this.show(err.message);
-    }
-  }
-
 }
