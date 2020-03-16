@@ -2,3 +2,18 @@
     text-decoration: line-through;
     opacity: 0.6;
 }
+
+.highlight {
+    transition: background-color 2s ease-in-out;
+    background-color: #fff2ac;
+    padding: 0.5rem 0 0 0;
+    border-radius: 10px;
+    font-weight: bold;
+    animation: zoominout 4s forwards;
+}
+
+@keyframes zoominout {
+    0%, 20%, 50%, 80%, 100% {transform: scale(1, 1);} 
+    40% {transform: scale(1.2, 1.2);} 
+    60% {transform: scale(1.1, 1.1);} 
+}

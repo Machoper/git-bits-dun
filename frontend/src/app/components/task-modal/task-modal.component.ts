@@ -4,8 +4,8 @@ import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
 import { Task } from 'src/app/dao/task';
 import { PriorityOptions, IPriority } from 'src/app/dao/priority-options';
 
-const EDIT_TASK = 'Edit To-Do Task';
-const CREATE_NEW_TASK = 'Create New To-Do Task';
+const EDIT_TASK = 'Edit Task';
+const CREATE_NEW_TASK = 'Create New Task';
 
 @Component({
   selector: 'app-task-modal',

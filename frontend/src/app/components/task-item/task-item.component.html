@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row" [ngClass]="{'highlight': task.hasTimer}">
     <span class="col-sm-1 task-action">
         <button mat-icon-button matTooltip="Edit task"
             class="animated fadeIn"
@@ -7,7 +7,7 @@
             (click)="edit(task)">
             <mat-icon>edit</mat-icon>
         </button>
-        <mat-checkbox 
+        <mat-checkbox matTooltip="{{task.completed ? 'Uncomplete' : 'Complete'}} this task"
             class="animated fadeIn" 
             *ngIf="!editMode" 
             [(ngModel)]="task.completed" 

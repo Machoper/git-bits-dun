@@ -1,15 +1,15 @@
 <h1 mat-dialog-title>{{modelTitle}}</h1>
-<div mat-dialog-content>
+<div mat-dialog-content class="p-5">
     <form [formGroup]="taskForm">
         <mat-form-field class="task-modal-field">
             <mat-label>Title</mat-label>
             <input matInput formControlName="title" placeholder="Add a task..." required>
         </mat-form-field>
-        <mat-form-field class="task-modal-field">
+        <mat-form-field class="task-modal-field mt-5">
             <mat-label>Description</mat-label>
             <textarea matInput formControlName="description" placeholder="Add a description..."></textarea>
         </mat-form-field>
-        <mat-form-field class="task-modal-field">
+        <mat-form-field class="task-modal-field mt-5">
             <mat-label>Priority</mat-label>
             <mat-select formControlName="priority">
                 <mat-option *ngFor="let option of priorityOptions" [value]="option.value">

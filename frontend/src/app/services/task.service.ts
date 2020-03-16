@@ -25,7 +25,7 @@ export class TaskService {
 
   public openTaskModal(data?: any): MatDialogRef<TaskModalComponent> {
     return this.dialog.open(TaskModalComponent, {
-      width: '600px',
+      width: '800px',
       data: data || {}
     });
   }

@@ -16,7 +16,9 @@
                     <mat-icon>add_alarm</mat-icon>
                     <span class="m-2 text-uppercase" style="font-size: 30px;">Git Bits Dun</span>
                 </button>
-                <button mat-button class="pull-right mt-3" (click)="toggleEditMode()">
+                <button mat-button matTooltip="{{editMode ? 'Done': 'Edit task list'}}" 
+                    class="pull-right mt-3" 
+                    (click)="toggleEditMode()">
                     {{editMode ? 'Done' : 'Edit'}}
                 </button>
             </mat-card-title>
@@ -37,7 +39,7 @@
                 </mat-list-item>
             </mat-list>
 
-            <button mat-raised-button color="accent" matTooltip="Hide/Show completed tasks" 
+            <button mat-raised-button color="accent" matTooltip="{{showCompleted ? 'Hide' : 'Show'}} completed tasks" 
                 class="show-hide-button mt-5 mb-5" 
                 (click)="toggleShowCompleted()">
                 {{showCompleted ? 'HIDE COMPLETED TASKS' : 'SHOW COMPLETED TASKS'}}

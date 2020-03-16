@@ -1,5 +1,5 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { Component, OnInit, Input, Output, EventEmitter, OnDestroy } from '@angular/core';
+import { BehaviorSubject, Subscription } from 'rxjs';
 import { ToastService } from 'src/app/services/toast.service';
 
 const INTERVAL = 1000;
@@ -15,20 +15,24 @@ const CANCEL_TIMER = 'Timer has been canceled';
   templateUrl: './task-timer.component.html',
   styleUrls: ['./task-timer.component.scss']
 })
-export class TaskTimerComponent implements OnInit {
+export class TaskTimerComponent implements OnInit, OnDestroy {
 
   @Input() taskTimer: number;
   @Output() timeUp: EventEmitter<any> = new EventEmitter();
   source$: BehaviorSubject<number>;
   countdown: string;
 
-  constructor(private toastService: ToastService) {
+  private subscription: Subscription;
+
+  constructor(private toastService: ToastService) { }
+
+  ngOnInit() {
     this.source$ = new BehaviorSubject<number>(0);
     setInterval(() => {
       const newVal = this.source$.getValue() + 1;
       this.source$.next(newVal);
     }, INTERVAL);
-    this.source$.asObservable().subscribe(val => {
+    this.subscription = this.source$.asObservable().subscribe(val => {
       const timeRemaining = TOTAL_TIME - val;
       if (timeRemaining >= 0) {
         this.countdown = this.getFormattedTime(timeRemaining);
@@ -40,7 +44,8 @@ export class TaskTimerComponent implements OnInit {
     this.toastService.show(TIMER_START);
   }
 
-  ngOnInit() {
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 
   public cancelTimer(): void {
