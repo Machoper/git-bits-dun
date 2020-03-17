@@ -2,12 +2,11 @@
   "name": "git-bits-dun-api",
   "version": "1.0.0",
   "description": "RESTful API for Git Bits Dun",
-  "main": "index.js",
   "scripts": {
     "build": "tsc",
     "dev": "ts-node ./src/server.ts",
     "start": "nodemon",
-    "prod": "npm run build && npm run start"
+    "prod": "npm run build && node ./dist/server.js"
   },
   "author": "Yixuan Qian",
   "license": "ISC",

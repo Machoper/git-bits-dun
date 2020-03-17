@@ -1,0 +1,20 @@
+{
+  "name": "git-bits-dun",
+  "version": "1.0.0",
+  "description": "Git Bits Dun",
+  "scripts": {
+    "start-api": "cd api && npm install && npm run prod",
+    "start-frontend": "cd frontend && npm install && npm start",
+    "start": "npm run start-api & npm run start-frontend"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Machoper/git-bits-dun.git"
+  },
+  "author": "Yixuan Qian",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Machoper/git-bits-dun/issues"
+  },
+  "homepage": "https://github.com/Machoper/git-bits-dun#readme"
+}
